@@ -1,0 +1,15 @@
+name: Update microsoft/winget-pkgs for official release
+on:
+  release:
+    types: [released]
+jobs:
+  publish:
+    runs-on: windows-latest
+    steps:
+      - uses: vedantmgoyal2009/winget-releaser@latest
+        with:
+          identifier: EclipseAdoptium.Temurin.11.JDK
+          token: ${{ secrets.WINGET_TOKEN }}
+          version-regex: 'jdk-11[0-9.]+'
+          installers-regex: '\.msi$'
+          fork-user: eclipse-temurin-bot
